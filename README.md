@@ -19,20 +19,20 @@
 
 ```terminal
 # clone the repo
-git clone https://github.com/matthiasdroth/Pytest_tutorial_freecodecamp.git
+$ git clone https://github.com/matthiasdroth/Pytest_tutorial_freecodecamp.git
 # navigate into the repo
-cd Pytest_tutorial_freecodecamp
+$ cd Pytest_tutorial_freecodecamp
 # create a virtual environment
-python -m venv env # or python3 -m venv env, depending on your python setup
+$ python -m venv env # or python3 -m venv env, depending on your python setup
 # activate the environment
-source env/bin/activate
+$ source env/bin/activate
 # install the dependencies
-pip install -r requirements.txt
+$ pip install -r requirements.txt
 ```
 
 ```terminal
 # deactivate the environment
-deactivate
+$ deactivate
 ```
 
 ## Commands for running Pytest
