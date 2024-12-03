@@ -38,6 +38,7 @@ $ deactivate
 ## Commands for running Pytest
 
 `tests$ pytest test_square.py` (vanilla)
+
 `tests$ pytest -v test_square.py` (verbose)
 
 It may be necessary to set the `PYTHONPATH` environment variable in the following fashion:
