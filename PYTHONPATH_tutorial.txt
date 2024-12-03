@@ -1,0 +1,86 @@
+
+Understanding PYTHONPATH in Python
+
+What is PYTHONPATH?
+- PYTHONPATH is an environment variable used by Python to determine where to look for modules and packages when importing them.
+- By default, Python searches for modules in:
+  1. The directory of the script being executed.
+  2. The standard library directories (e.g., site-packages).
+  3. Paths listed in the PYTHONPATH variable (if set).
+
+You can view the current Python search path using:
+import sys
+print(sys.path)
+
+---
+
+How Can PYTHONPATH Be Changed?
+
+1. Temporarily Modify PYTHONPATH
+You can set PYTHONPATH temporarily in the terminal or command prompt when running a script.
+
+Linux/macOS:
+export PYTHONPATH=/path/to/your/project:$PYTHONPATH
+python your_script.py
+
+Windows (Command Prompt):
+set PYTHONPATH=C:\path\to\your\project;%PYTHONPATH%
+python your_script.py
+
+This change applies only to the current session.
+
+2. Permanently Modify PYTHONPATH
+To set PYTHONPATH permanently:
+- Linux/macOS:
+  - Edit your shell configuration file (~/.bashrc, ~/.zshrc, etc.) and add:
+    export PYTHONPATH=/path/to/your/project:$PYTHONPATH
+  - Run source ~/.bashrc or source ~/.zshrc to apply changes.
+- Windows:
+  - Go to System Properties > Environment Variables.
+  - Add or modify the PYTHONPATH variable under user or system variables.
+
+3. Modify sys.path in Code
+You can dynamically add directories to the search path in your script:
+import sys
+sys.path.append('/path/to/your/project')
+
+---
+
+Typical Use Cases for PYTHONPATH
+
+1. Working with Custom Project Structures
+If your project contains multiple directories, and you need to import files from sibling directories:
+project/
+├── src/
+│   └── my_module.py
+├── tests/
+│   └── test_my_module.py
+
+Set PYTHONPATH to the project root (project/) to allow imports like:
+from src.my_module import some_function
+
+2. Running Tests Across Directories
+Testing frameworks like pytest and unittest may fail to discover modules if they are in a different directory. Adjusting PYTHONPATH ensures all modules can be located.
+
+Example:
+export PYTHONPATH=/path/to/project
+pytest
+
+3. Using Shared Libraries
+If you have a shared library that isn’t installed via pip, you can use PYTHONPATH to include its location:
+export PYTHONPATH=/path/to/shared_library:$PYTHONPATH
+
+4. Avoiding Installation During Development
+During development, you can set PYTHONPATH to point to the source directory of your library, avoiding the need to install it repeatedly:
+export PYTHONPATH=/path/to/library_source
+
+---
+
+Best Practices
+- Use Virtual Environments: Instead of modifying PYTHONPATH, use virtual environments (venv or conda) to isolate dependencies.
+- Avoid Hardcoding Paths: Dynamically adjust sys.path within scripts for flexibility.
+- Use PYTHONPATH Sparingly: Only use it for temporary or development purposes; permanent changes can lead to confusion.
+
+---
+
+By understanding and using PYTHONPATH, you can effectively manage complex project structures and modularize your codebase for seamless imports.
