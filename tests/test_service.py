@@ -1,11 +1,11 @@
+# Run this as follows:
+# .../tests$ pytest test_service.py
+# .../tests$ pytest -v test_service.py
+
 import pytest
 import requests
 import unittest.mock as mock
 import source.service as service
-
-# Run this as follows:
-# .../tests$ pytest test_service.py
-# .../tests$ pytest -v test_service.py
 
 @mock.patch("source.service.get_user_from_db")
 def test_get_user_from_db(mock_get_user_from_db):

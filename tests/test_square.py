@@ -1,9 +1,9 @@
-import pytest
-import source.shapes as shapes
-
 # Run this as follows:
 # .../tests$ pytest test_square.py
 # .../tests$ pytest -v test_square.py
+
+import pytest
+import source.shapes as shapes
 
 @pytest.mark.parametrize("side_length, expected_area", [(5, 25), (4, 16), (9, 81)])
 def test_multiple_square_areas(side_length, expected_area):
